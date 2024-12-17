@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "l+SUEnFUP8I=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Siqueiraaf\\Desktop\\Todo\\TodoAPi\\TodoAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Siqueiraaf\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.4\\microsoft.aspnetcore.openapi.8.0.4.nupkg.sha512",
+    "C:\\Users\\Siqueiraaf\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512"
+  ],
+  "logs": []
+}
