@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Siqueiraaf\\Desktop\\Todo\\TodoAPi\\TodoAPI.csproj": {}
+    "C:\\Users\\Siqueiraaf\\Desktop\\Todo\\TodoAPI\\TodoAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Siqueiraaf\\Desktop\\Todo\\TodoAPi\\TodoAPI.csproj": {
+    "C:\\Users\\Siqueiraaf\\Desktop\\Todo\\TodoAPI\\TodoAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Siqueiraaf\\Desktop\\Todo\\TodoAPi\\TodoAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Siqueiraaf\\Desktop\\Todo\\TodoAPI\\TodoAPI.csproj",
         "projectName": "TodoAPI",
-        "projectPath": "C:\\Users\\Siqueiraaf\\Desktop\\Todo\\TodoAPi\\TodoAPI.csproj",
+        "projectPath": "C:\\Users\\Siqueiraaf\\Desktop\\Todo\\TodoAPI\\TodoAPI.csproj",
         "packagesPath": "C:\\Users\\Siqueiraaf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Siqueiraaf\\Desktop\\Todo\\TodoAPi\\obj\\",
+        "outputPath": "C:\\Users\\Siqueiraaf\\Desktop\\Todo\\TodoAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,7 +43,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -51,9 +51,31 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
             }
           },
           "imports": [
@@ -75,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
