@@ -1,27 +1,46 @@
-// program.cs
-using Microsoft.AspNetCore.Builder;
+using TodoAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Adicionando o serviço para o Container
-builder.Services.AddControllers();
 
+
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
+// ....
+
+
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>(); // Add this line
+
+builder.Services.AddProblemDetails();  // Add this line
+
+// Adding of login 
+builder.Services.AddLogging();  //  Add this line
+
+
+
 var app = builder.Build();
 
-// Configurando o HTTP request pipeline
+
+// ......
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection(); // Add this line
 
+app.UseExceptionHandler();
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+
