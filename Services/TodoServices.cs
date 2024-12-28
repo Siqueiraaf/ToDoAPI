@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using TodoAPi.Interfaces;
 using TodoAPi.Models;
 using TodoAPI.AppDataContext;
@@ -22,10 +19,30 @@ namespace TodoAPI.Services
             _logger = logger;
             _mapper = mapper;
         }
-        
-        public Task CreateTodoAsync(CreateTodoRequestDTO request)
+
+        public async Task CreateTodoAsync(CreateTodoRequestDTO request)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var todo = _mapper.Map<Todo>(request);
+                todo.CreatedAt = DateTime.UtcNow;
+                _context.Todos.Add(todo);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Ocorreu um erro ao criar o item Todo.");
+                throw new Exception("Ocorreu um erro ao criar o item Todo.");
+            }
+        }
+        public async Task<IEnumerable<Todo>> GetAllAsync()
+        {
+            var todo = await _context.Todos.ToListAsync();
+            if (todo == null)
+            {
+                throw new Exception("Nenhum item encontrado.");
+            }
+            return todo;
         }
 
         public Task DeleteTodoAsync(Guid id)
@@ -33,10 +50,6 @@ namespace TodoAPI.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Todo>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
 
         public Task<Todo> GetByIdAsync(Guid id)
         {
