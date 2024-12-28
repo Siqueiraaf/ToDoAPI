@@ -1,7 +1,8 @@
 using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
+using TodoAPi.Models;
 
-namespace TodoAPi.Middleware
+namespace TodoAPI.Middleware
 {
     public class GlobalExceptionHandler : IExceptionHandler
     {
@@ -13,14 +14,14 @@ namespace TodoAPi.Middleware
         }
 
         public async ValueTask<bool> TryHandleAsync(
-            HttpContext httpContext, 
+            HttpContext httpContext,
             Exception exception,
             CancellationToken cancellationToken)
         {
             _logger.LogError(
-                $"An error occurred while processing the request: {exception.Message}");
+                $"An error occurred while processing your request: {exception.Message}");
 
-            var ErrorResponse = new ErrorResponse
+            var errorResponse = new ErrorResponse
             {
                 Message = exception.Message
             };
@@ -28,21 +29,21 @@ namespace TodoAPi.Middleware
             switch (exception)
             {
                 case BadHttpRequestException:
-                    ErrorResponse.StatusCode = (int)HttpStatusCode.BadRequest;
-                    ErrorResponse.Title = exception.GetType().Name;
+                    errorResponse.StatusCode = (int)HttpStatusCode.BadRequest;
+                    errorResponse.Title = exception.GetType().Name;
                     break;
 
                 default:
-                    ErrorResponse.StatusCode = (int)HttpStatusCode.InternalServerError;
-                    ErrorResponse.Title = "Internal Server Error";
+                    errorResponse.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    errorResponse.Title = "Internal Server Error";
                     break;
             }
 
-            httpContext.Response.StatusCode = ErrorResponse.StatusCode;
+            httpContext.Response.StatusCode = errorResponse.StatusCode;
 
             await httpContext
                 .Response
-                .WriteAsJsonAsync(ErrorResponse, cancellationToken);
+                .WriteAsJsonAsync(errorResponse, cancellationToken);
 
             return true;
         }
