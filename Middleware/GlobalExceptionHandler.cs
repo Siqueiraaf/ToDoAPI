@@ -1,8 +1,7 @@
 using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
-using TodoAPI.Models;
 
-namespace TodoAPI.Middleware
+namespace TodoAPi.Middleware
 {
     public class GlobalExceptionHandler : IExceptionHandler
     {

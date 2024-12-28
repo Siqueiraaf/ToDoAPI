@@ -1,4 +1,4 @@
-namespace TodoAPI.Models
+namespace TodoAPi.Models
 {
     public class ErrorResponse
     {
